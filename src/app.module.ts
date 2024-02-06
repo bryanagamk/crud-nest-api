@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { StudentsModule } from './students/students.module';
 
 @Module({
   imports: [
@@ -12,9 +13,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'root',
       password: 'root',
       database: 'crud_learning_vue',
-      entities: ['src/**/**.entity{.ts,.js}'],
+      entities: ['dist/**/**.entity{.ts,.js}'],
       synchronize: true,
+      autoLoadEntities: true,
     }),
+    StudentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
